@@ -1,0 +1,51 @@
+<h1 class="tituloBalance">Balance de ventas</h1>
+<div class="mat-elevation-z8 data-table">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+    <!-- ['id', 'fecha', 'tipoDoc', 'totalNeto', 'rutCliente', 'tipoPago']; -->
+    <!-- Fecha Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+      <td mat-cell *matCellDef="let row">{{row.fecha}}</td>
+    </ng-container>
+    <!-- Tipo de documento Column -->
+    <ng-container matColumnDef="tipoDoc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de documento</th>
+      <td mat-cell *matCellDef="let row">{{row.tipoDoc}}</td>
+    </ng-container>
+    <!-- Total Neto Column -->
+    <ng-container matColumnDef="totalNeto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Neto</th>
+      <td mat-cell *matCellDef="let row">${{row.totalNeto}}</td>
+    </ng-container>
+        <!-- IVA Column -->
+        <ng-container matColumnDef="iva">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>IVA</th>
+          <td mat-cell *matCellDef="let row">${{row.iva}}</td>
+        </ng-container>
+    <!-- Rut cliente Column -->
+    <ng-container matColumnDef="rutCliente">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rut cliente</th>
+      <td mat-cell *matCellDef="let row">{{row.rutCliente}}</td>
+    </ng-container>
+    <!-- Tipo de pago Column -->
+    <ng-container matColumnDef="tipoPago">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de pago</th>
+      <td mat-cell *matCellDef="let row">{{row.tipoPago}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[1, 10, 20]">
+  </mat-paginator>
+</div>
